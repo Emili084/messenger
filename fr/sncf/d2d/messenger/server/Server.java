@@ -5,14 +5,30 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 
 public class Server {
-    public Server(String[] args) {
+
+    private InetAddress address;
+    private int port = 19337;
+    private String banner = "Bienvenue sur Messenger";
+
+    public Server(String[] args, InetAddress address, int port, String banner) {
+        this.address = address;
+        this.port = port;
+        this.banner = banner;
+    }
+
+    public InetAddress getAddress() {
+        return address;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public String getBanner() {
+        return banner;
     }
 
     public void handleServerMode(String[] args) {
-
-        InetAddress address = null;
-        int port = 19337;
-        String banner = "Bienvenue sur Messenger";
 
         for (int i = 0; i < args.length; i++) {
 

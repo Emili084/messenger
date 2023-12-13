@@ -8,11 +8,11 @@ import java.net.InetAddress;
 public class Messenger {
 
     private static InetAddress host;
-    private String address;
+    private static InetAddress address;
     private static int portClient;
-    private int portServer;
+    private static int portServer;
     private static String username;
-    private String banner;
+    private static String banner;
 
     public static void main(String[] args) {
 
@@ -42,8 +42,14 @@ public class Messenger {
                     break;
 
                 case "-l":
-                    Server server = new Server(args);
+                    Server server = new Server(args, address, portServer, banner);
                     server.handleServerMode(args);
+                    address = server.getAddress();
+                    portServer = server.getPort();
+                    banner = server.getBanner();
+                    System.out.println(address);
+                    System.out.println(portServer);
+                    System.out.println(banner);
                     hasModeFlag = true;
                     break;
                 default:
