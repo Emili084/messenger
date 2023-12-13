@@ -10,13 +10,29 @@ import java.net.UnknownHostException;
 
 public class Client {
 
-    public Client(String[] args) {}
+    private InetAddress host;
+    private int port;
+    private String username;
+
+    public Client(String[] args, InetAddress host, int port, String username) {
+        this.host = host;
+        this.port = port;
+        this.username = username;
+    }
+
+    public InetAddress getHost() {
+        return host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public String getUsername() {
+        return username;
+    }
 
     public void handleClientMode(String[] args) {
-
-        InetAddress host;
-        int port;
-        String username;
 
         for (int i = 0; i < args.length; i++) {
 
@@ -25,11 +41,10 @@ public class Client {
                 case "-h":
 
                     try {
-                       host = InetAddress.getByName(args[i +1]);
-                    }
-                    catch(UnknownHostException unknownHostException){
+                        host = InetAddress.getByName(args[i + 1]);
+                    } catch (UnknownHostException unknownHostException) {
 
-                        System.out.println( String.format("Adresse Ip invalide : %s", unknownHostException.getMessage()));
+                        System.out.println(String.format("Adresse Ip invalide : %s", unknownHostException.getMessage()));
                         return;
                     }
 
@@ -38,7 +53,7 @@ public class Client {
 
                 case "-p":
                     port = Integer.parseInt(args[i + 1]);
-                    if(port>65536||port<0){
+                    if (port > 65536 || port < 0) {
                         System.out.println("Entrer un port valide compris entre 0 et 65535");
                         return;
                     }

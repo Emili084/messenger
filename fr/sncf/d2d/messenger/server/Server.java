@@ -20,11 +20,10 @@ public class Server {
 
                 case "-a":
                     try {
-                        address = InetAddress.getByName(args[i +1]);
-                    }
-                    catch(UnknownHostException unknownHostException){
+                        address = InetAddress.getByName(args[i + 1]);
+                    } catch (UnknownHostException unknownHostException) {
 
-                        System.out.println( String.format("Adresse Ip invalide : %s", unknownHostException.getMessage()));
+                        System.out.println(String.format("Adresse Ip invalide : %s", unknownHostException.getMessage()));
                         return;
                     }
                     System.out.println(address);
@@ -32,7 +31,7 @@ public class Server {
 
                 case "-p":
                     port = Integer.parseInt(args[i + 1]);
-                    if(port>65536||port<0){
+                    if (port > 65536 || port < 0) {
                         System.out.println("Entrer un port valide compris entre 0 et 65535");
                         return;
                     }
