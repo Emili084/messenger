@@ -2,6 +2,7 @@ package fr.sncf.d2d.messenger;
 
 import fr.sncf.d2d.messenger.client.Client;
 import fr.sncf.d2d.messenger.server.Server;
+import fr.sncf.d2d.messenger.server.ServerSocketHandler;
 
 import java.net.InetAddress;
 
@@ -50,6 +51,9 @@ public class Messenger {
                     System.out.println(address);
                     System.out.println(portServer);
                     System.out.println(banner);
+                    ServerSocketHandler serverSocketHandler = new ServerSocketHandler(address, portServer);
+                    serverSocketHandler.receiveObject();
+                    serverSocketHandler.sendObject(obj);
                     hasModeFlag = true;
                     break;
                 default:
