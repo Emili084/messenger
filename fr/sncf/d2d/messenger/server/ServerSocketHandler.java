@@ -25,7 +25,7 @@ public class ServerSocketHandler {
 //    }
 
     public ServerSocketHandler(ServerSocket serverSocket) {
-
+    this.serverSocket = serverSocket;
     }
 
     public void startServer() {
